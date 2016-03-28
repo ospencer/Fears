@@ -1,0 +1,153 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #1C1D21;
+  min-height: 100%;
+}
+
+#title {
+  color: #fff;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  text-align: center;
+  left: 50vw;
+  top: 50vh;
+  margin-left: -150px;
+  margin-top: -150px;
+}
+
+#title > h1 {
+  width: 300px;
+  height: 300px;
+  min-height: 300px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.circle {
+  -moz-border-radius: 300px/300px;
+  -webkit-border-radius: 300px 300px;
+  border-radius: 300px/300px;
+  width:300px;
+  height: 300px;
+  position: absolute;
+  transition: left 0.5s, top 0.5s, width 0.5s, height 0.5s, transform 0.5s, margin 0.5s, opacity 2s;
+}
+
+.circle[active="true"] {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  width:100vw;
+  height: 100vh;
+  z-index: 10;
+  left: 0 !important;
+  top: 0 !important;
+  margin-left: 0 !important;
+  margin-top: 0 !important;
+}
+
+.circle:hover {
+  -webkit-box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.75);
+}
+
+.circle > div {
+  display: none;
+  color: #fff;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.circle[active="true"] > div {
+  display: block;
+}
+
+.circle.active > div {
+  opacity: 1;
+}
+
+.circle > h1 {
+  display: table-cell;
+  height: 300px;
+  width: 300px;
+  vertical-align: middle;
+  text-align: center;
+  color: #fff;
+  padding: 10px;
+}
+
+.circle[active="true"] > h1 {
+  width: auto;
+  height: auto;
+}
+
+.circle.purple {
+  background-color: #725AC1
+}
+
+.circle.blue {
+  background-color: #56CBF9
+}
+
+.circle.pink {
+  background-color: #CDB7E5
+}
+
+.circle.periwinkle {
+  background-color: #6D72C3
+}
+
+.circle.voilet {
+  background-color: #985F99
+}
+
+#circle1 {
+  /*left: 200px;
+  top: 100px;*/
+  left: 50vw;
+  top: 50vh;
+  margin-left: -150px;
+  margin-top: -150px;
+}
+
+#circle2 {
+  /*left: 800px;
+  top: 600px;*/
+  left: 50vw;
+  top: 50vh;
+  margin-left: -150px;
+  margin-top: -150px;
+}
+
+#circle3 {
+  /*left: 100px;
+  top: 800px;*/
+  left: 50vw;
+  top: 50vh;
+  margin-left: -150px;
+  margin-top: -150px;
+}
+
+#circle4 {
+  /*left: 650px;
+  top: 150px;*/
+  left: 50vw;
+  top: 50vh;
+  margin-left: -150px;
+  margin-top: -150px;
+}
+
+#circle5 {
+  /*left: 650px;
+  top: 150px;*/
+  left: 50vw;
+  top: 50vh;
+  margin-left: -150px;
+  margin-top: -150px;
+}
