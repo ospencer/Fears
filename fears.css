@@ -13,8 +13,8 @@ body {
   height: 300px;
   position: absolute;
   text-align: center;
-  left: 50vw;
-  top: 50vh;
+  left: 15vw;
+  top: 15vh;
   margin-left: -150px;
   margin-top: -150px;
 }
@@ -31,9 +31,13 @@ body {
   -moz-border-radius: 200px/200px;
   -webkit-border-radius: 200px 200px;
   border-radius: 200px/200px;
-  width:200px;
-  height: 200px;
+  width:220px;
+  height: 220px;
   position: absolute;
+  left: 50vw;
+  top: 50vh;
+  margin-left: -100px;
+  margin-top: -100px;
   transition: left 0.5s, top 0.5s, width 0.5s, height 0.5s, transform 0.5s, margin 0.5s, opacity 2s;
 }
 
@@ -74,8 +78,8 @@ body {
 
 .circle > h2 {
   display: table-cell;
-  height: 200px;
-  width: 200px;
+  height: 220px;
+  width: 220px;
   vertical-align: middle;
   text-align: center;
   color: #fff;
@@ -105,49 +109,4 @@ body {
 
 .circle.voilet {
   background-color: #985F99
-}
-
-#circle1 {
-  /*left: 200px;
-  top: 100px;*/
-  left: 50vw;
-  top: 50vh;
-  margin-left: -100px;
-  margin-top: -100px;
-}
-
-#circle2 {
-  /*left: 800px;
-  top: 600px;*/
-  left: 50vw;
-  top: 50vh;
-  margin-left: -100px;
-  margin-top: -100px;
-}
-
-#circle3 {
-  /*left: 100px;
-  top: 800px;*/
-  left: 50vw;
-  top: 50vh;
-  margin-left: -100px;
-  margin-top: -100px;
-}
-
-#circle4 {
-  /*left: 650px;
-  top: 100px;*/
-  left: 50vw;
-  top: 50vh;
-  margin-left: -100px;
-  margin-top: -100px;
-}
-
-#circle5 {
-  /*left: 650px;
-  top: 100px;*/
-  left: 50vw;
-  top: 50vh;
-  margin-left: -100px;
-  margin-top: -100px;
 }

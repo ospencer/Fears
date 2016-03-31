@@ -83,7 +83,7 @@ if Meteor.isClient
     # )
 
     circles = $('.circle')
-    distance = 250
+    distance = 200
     for circle, i in circles
       $.keyframe.define([{
         name: "rotate#{i}"
