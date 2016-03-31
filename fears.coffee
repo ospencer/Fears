@@ -2,85 +2,68 @@ if Meteor.isClient
   $ ->
     circles = $('.circle')
     circleActive = false
+    resetting = false
     old = {}
     transformsMatricies = []
     ttransform = ''
 
     $('.circle').on('click', ->
-      $t = $(this)
-      if circleActive is true
+      unless resetting
+        $t = $(this)
+        if circleActive is true
 
-        $t.attr('active', 'false')
-        $t.removeClass('active')
-        $t.css('transform', ttransform)
-        for circle, i in circles
-          $.keyframe.define([{
-            name: "reset#{i}"
-            to:
-              'transform': "matrix(1, 0, 0, 1, 0, 0)"
-            from:
-              'transform': transformsMatricies[i]
-          }])
-          $(circle).playKeyframe(
-            name: "reset#{i}"
-            duration: '1s'
-            iterationCount: 1
-            timingFunction: 'linear'
-          )
+          $t.attr('active', 'false')
+          $t.removeClass('active')
+          $t.css('transform', ttransform)
+          resetting = true
+          for circle, i in circles
+            $.keyframe.define([{
+              name: "reset#{i}"
+              to:
+                'transform': "matrix(1, 0, 0, 1, 0, 0)"
+              from:
+                'transform': transformsMatricies[i]
+            }])
+            $(circle).playKeyframe(
+              name: "reset#{i}"
+              duration: '1s'
+              iterationCount: 1
+              timingFunction: 'linear'
+            )
+            setTimeout(
+              ->
+                for circle, k in circles
+                  $(circle).playKeyframe(
+                    name: "assumePosition#{k}"
+                    duration: '1s'
+                    iterationCount: 1
+                    timingFunction: 'ease'
+                  )
+                  resetting = false
+              1*1000
+            )
+          circleActive = false
+        else
+          transformsMatricies = []
+          ttransform = $t.css('transform')
+          values = ttransform.match(/-?[\d\.]+/g)
+          for circle, i in circles
+            $c = $(circle)
+            transformsMatricies.push $c.css('transform')
+            transform = $c.css('transform')
+            $c.resetKeyframe()
+            $c.css('transform', transform)
+
+          $t.attr('style', '')
+          old.matrix = $t.css('-webkit-transform')
+          circleActive = true
+          $t.attr('active', 'true')
           setTimeout(
             ->
-              for circle, k in circles
-                $(circle).playKeyframe(
-                  name: "assumePosition#{k}"
-                  duration: '1s'
-                  iterationCount: 1
-                  timingFunction: 'ease'
-                )
-            1*1000
+              $t.addClass('active')
+            500
           )
-        circleActive = false
-      else
-        transformsMatricies = []
-        ttransform = $t.css('transform')
-        values = ttransform.match(/-?[\d\.]+/g)
-        for circle, i in circles
-          $c = $(circle)
-          transformsMatricies.push $c.css('transform')
-          transform = $c.css('transform')
-          $c.resetKeyframe()
-          $c.css('transform', transform)
-
-        # $t.attr('style', "transform: translate(#{-values[4]}, #{-values[5]}), transition: transform 0.5s")
-        $t.attr('style', '')
-          # $(circle).css('-webkit-transform', 'matrix(1, 0, 0, 1, 0, 0)')
-        # $new = $t.clone()
-        # $new.attr('style', "top: #{$t.css('top')}; left: #{$t.css('left')}")
-        # old.style = $t.attr('style')
-        # old.top = $t.css('top')
-        # old.left = $t.css('left')
-        old.matrix = $t.css('-webkit-transform')
-        # $t.attr('style', "top: #{old.top}; left: #{old.left}")
-        circleActive = true
-        # $('body').append($new)
-        # $t.css('-webkit-transform', 'matrix(1, 0, 0, 1, 500, 500)')
-        # $t.attr('style', $t.css('-webkit-transform'))
-        $t.attr('active', 'true')
-        setTimeout(
-          ->
-            $t.addClass('active')
-          500
-        )
     )
-    # .hover(
-    #   ->
-    #     unless circleActive
-    #       for circle, i in circles
-    #         $(circle).pauseKeyframe()
-    #   ->
-    #     unless circleActive
-    #       for circle, i in circles
-    #         $(circle).resumeKeyframe()
-    # )
 
     circles = $('.circle')
     distance = 200
