@@ -13,8 +13,8 @@ body {
   height: 300px;
   position: absolute;
   text-align: center;
-  left: 15vw;
-  top: 15vh;
+  left: 200px;
+  top: 100px;
   margin-left: -150px;
   margin-top: -150px;
   cursor: default;
@@ -62,7 +62,7 @@ body {
   margin-left: -100px;
   margin-top: -100px;
   cursor: default;
-  transition: left 0.5s, top 0.5s, width 0.5s, height 0.5s, transform 0.5s, margin 0.5s, opacity 2s;
+  transition: left 0.5s, top 0.5s, width 0.5s, height 0.5s, transform 0.5s, margin 0.5s, opacity 2s, background-color 1s, border-color 1s;
 }
 
 .circle[active="true"] {
@@ -76,6 +76,12 @@ body {
   top: 0 !important;
   margin-left: 0 !important;
   margin-top: 0 !important;
+  border: none;
+}
+
+.circle.clicked {
+  background-color: #1C1D21;
+  border: 3px solid #fff;
 }
 
 .circle:hover {
@@ -119,22 +125,33 @@ body {
   padding-top: 30px;
 }
 
-.circle.purple {
+.purple {
   background-color: #725AC1
 }
 
-.circle.blue {
+.blue {
   background-color: #56CBF9
 }
 
-.circle.pink {
+.pink {
   background-color: #A491D3
 }
 
-.circle.periwinkle {
+.periwinkle {
   background-color: #6D72C3
 }
 
-.circle.voilet {
+.voilet {
   background-color: #985F99
+}
+
+#about {
+  background-color: #1C1D21;
+  border: 3px solid #fff;
+  color: #000;
+}
+
+#about[active="true"] {
+  /*font-size: 40px;*/
+  border: none;
 }
