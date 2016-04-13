@@ -1,13 +1,13 @@
 if Meteor.isClient
   $ ->
-    circles = $('.circle')
+    circles = $('.animated')
     circleActive = false
     resetting = false
     old = {}
     transformsMatricies = []
     ttransform = ''
 
-    $('.circle').on('click', ->
+    $('.animated').on('click', ->
       unless resetting
         $t = $(this)
         if circleActive is true
@@ -40,6 +40,11 @@ if Meteor.isClient
                     timingFunction: 'ease'
                   )
                   resetting = false
+                  setTimeout(
+                    ->
+                      $t.addClass('clicked')
+                    1*1000
+                  )
               1*1000
             )
           circleActive = false
@@ -57,6 +62,7 @@ if Meteor.isClient
           $t.attr('style', '')
           old.matrix = $t.css('-webkit-transform')
           circleActive = true
+          $t.removeClass('clicked')
           $t.attr('active', 'true')
           setTimeout(
             ->
@@ -65,8 +71,22 @@ if Meteor.isClient
           )
     )
 
-    circles = $('.circle')
-    distance = 200
+    $('#about').click(->
+      $t = $(this)
+      if $t.attr('active') is 'true'
+        $t.attr('active', 'false')
+        $t.removeClass('active')
+      else
+        $t.attr('active', 'true')
+        setTimeout(
+          ->
+            $t.addClass('active')
+          500
+        )
+    )
+
+    circles = $('.animated')
+    distance = 220
     for circle, i in circles
       $.keyframe.define([{
         name: "rotate#{i}"
